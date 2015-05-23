@@ -10,6 +10,9 @@ makeCacheMatrix <- function(x=matrix()) {
                 x <<- y
                 m <<- NULL
         }
+
+# We proceed to create a list that will contain information of the matrix
+
         get <- function() x 
         setinv <- function(invr) m <<- invr 
         getinv <- function() m 
@@ -17,6 +20,8 @@ makeCacheMatrix <- function(x=matrix()) {
              setinv = setinv,
              getinv = getinv) 
 }
+
+## cacheSolve: This function computes the inverse of the special "matrix" 
 
 cacheSolve <- function(x, ...) { 
         m <- x$getinv()
@@ -38,14 +43,6 @@ a <- makeCacheMatrix(matrix(w,2))
 
 cacheSolve(a)
 
-
-cacheSolve(a)
-
-## Running the example code gives us:
-#     [,1] [,2]
-# [1,]   -2  1.5
-# [2,]    1 -0.5
-# >
 # > cacheSolve(a)
 #      [,1] [,2]
 # [1,]   -2  1.5
